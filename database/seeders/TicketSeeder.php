@@ -1,0 +1,162 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Ticket;
+use Illuminate\Database\Seeder;
+
+class TicketSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $tickets = [
+            [
+                'title' => 'Synchronize Fest 2026',
+                'category' => 'Music Festival',
+                'description' => 'Festival musik lintas generasi dengan lineup nasional terbaik, area kuliner kurasi, dan panggung tematik untuk pecinta pop, rock, dan alternative.',
+                'price' => 425000,
+                'quota' => 3200,
+                'event_date' => '2026-08-14 19:00:00',
+                'status' => 'published',
+                'venue' => 'Gambir Expo',
+                'city' => 'Jakarta',
+                'organizer' => 'BANGSA Live',
+                'highlights' => "3 panggung utama\nLineup lintas genre\nArea F&B curated\nPhoto booth interaktif",
+                'terms' => "Tiket berlaku untuk 1 hari\nTidak bisa refund setelah pembayaran sukses\nWajib menunjukkan e-ticket saat masuk",
+            ],
+            [
+                'title' => 'Java Jazz Prelude Night',
+                'category' => 'Concert',
+                'description' => 'Malam intim bersama musisi jazz pilihan dengan format theater seating, sound system premium, dan sesi after-show eksklusif.',
+                'price' => 650000,
+                'quota' => 480,
+                'event_date' => '2026-06-20 20:00:00',
+                'status' => 'published',
+                'venue' => 'The Kasablanka Hall',
+                'city' => 'Jakarta',
+                'organizer' => 'Nada Nusantara',
+                'highlights' => "Theater seating premium\nMeet and greet add-on\nMerchandise booth resmi",
+                'terms' => "Pintu dibuka 90 menit sebelum acara\nDilarang membawa kamera profesional\nSeat mengikuti nomor tiket",
+            ],
+            [
+                'title' => 'Tulus Manusia Tour Bandung',
+                'category' => 'Concert',
+                'description' => 'Pertunjukan pop elegan dengan aransemen penuh, visual minimalis, dan pengalaman konser yang hangat untuk semua penonton.',
+                'price' => 575000,
+                'quota' => 0,
+                'event_date' => '2026-07-05 19:30:00',
+                'status' => 'sold_out',
+                'venue' => 'Sasana Budaya Ganesha',
+                'city' => 'Bandung',
+                'organizer' => 'Langit Nada',
+                'highlights' => "Visual immersive\nBand lengkap\nExclusive setlist Bandung",
+                'terms' => "Tiket sudah habis terjual\nValid hanya untuk jadwal tertera\nDilarang memindahtangankan QR publik",
+            ],
+            [
+                'title' => 'Indonesia Creative Tech Expo',
+                'category' => 'Expo',
+                'description' => 'Pameran teknologi kreatif berisi startup showcase, AI demo zone, workshop produk, dan networking session dengan founder lokal.',
+                'price' => 150000,
+                'quota' => 1800,
+                'event_date' => '2026-09-12 10:00:00',
+                'status' => 'published',
+                'venue' => 'Jogja Expo Center',
+                'city' => 'Yogyakarta',
+                'organizer' => 'Creative Forward',
+                'highlights' => "Startup showcase\nAI tools demo\nCareer corner\nCommunity meetup",
+                'terms' => "Tiket berlaku 1 hari penuh\nWorkshop tertentu memiliki kapasitas terbatas\nGunakan badge selama berada di venue",
+            ],
+            [
+                'title' => 'Bali Sunset Fun Run 10K',
+                'category' => 'Sports',
+                'description' => 'Fun run sore hari di tepi pantai dengan race pack premium, hiburan panggung, dan area recovery setelah finish.',
+                'price' => 275000,
+                'quota' => 950,
+                'event_date' => '2026-10-03 16:30:00',
+                'status' => 'published',
+                'venue' => 'Pantai Mertasari',
+                'city' => 'Denpasar',
+                'organizer' => 'Move Bali',
+                'highlights' => "Race pack premium\nMedali finisher\nSunset route\nLive DJ after run",
+                'terms' => "Peserta wajib hadir 60 menit sebelum start\nNomor dada wajib dipakai\nKategori non-kompetitif",
+            ],
+            [
+                'title' => 'UX Writing Intensive Bootcamp',
+                'category' => 'Workshop',
+                'description' => 'Bootcamp 2 hari untuk belajar UX writing, microcopy systems, content design, dan simulasi audit produk digital.',
+                'price' => 890000,
+                'quota' => 120,
+                'event_date' => '2026-05-24 09:00:00',
+                'status' => 'ended',
+                'venue' => 'Pakuwon Tower',
+                'city' => 'Surabaya',
+                'organizer' => 'Design Circle ID',
+                'highlights' => "Hands-on case study\nWorkbook digital\nTemplate audit copy",
+                'terms' => "Event telah selesai\nMateri hanya untuk peserta terdaftar\nSertifikat dikirim via email",
+            ],
+            [
+                'title' => 'Anime Matsuri Surabaya',
+                'category' => 'Pop Culture',
+                'description' => 'Perayaan pop culture Jepang dengan cosplay competition, artist alley, game booth, stage performance, dan community parade.',
+                'price' => 185000,
+                'quota' => 2400,
+                'event_date' => '2026-11-21 11:00:00',
+                'status' => 'published',
+                'venue' => 'Grand City Convex',
+                'city' => 'Surabaya',
+                'organizer' => 'Otakuverse',
+                'highlights' => "Cosplay competition\nArtist alley\nGame station\nStage performance",
+                'terms' => "Tiket berlaku untuk 1 hari kunjungan\nWeapon props harus melalui pemeriksaan\nIkuti aturan venue dan panitia",
+            ],
+            [
+                'title' => 'Investor Meetup: Startup & Capital',
+                'category' => 'Business',
+                'description' => 'Forum networking untuk founder, angel investor, dan operator dengan panel diskusi, speed networking, dan curated matchmaking.',
+                'price' => 350000,
+                'quota' => 220,
+                'event_date' => '2026-07-25 18:30:00',
+                'status' => 'draft',
+                'venue' => 'ARTOTEL Hub',
+                'city' => 'Jakarta',
+                'organizer' => 'Scale Society',
+                'highlights' => "Curated networking\nInvestor panel\nFounder speed dating",
+                'terms' => "Masih tahap draft\nBelum tampil ke publik\nDetail akhir dapat berubah",
+            ],
+            [
+                'title' => 'Festival Kopi Nusantara',
+                'category' => 'Food & Beverage',
+                'description' => 'Festival kopi dengan roastery showcase, cupping session, brewing battle, dan area market untuk UMKM pilihan.',
+                'price' => 95000,
+                'quota' => 1600,
+                'event_date' => '2026-06-28 10:00:00',
+                'status' => 'published',
+                'venue' => 'Lapangan Pussenif',
+                'city' => 'Bandung',
+                'organizer' => 'Ruang Rasa',
+                'highlights' => "Cupping session\nBrewing battle\nCoffee market\nLive acoustic stage",
+                'terms' => "Tiket hanya untuk 1 hari kunjungan\nKelas cupping first come first served\nBawa tumbler untuk refill station",
+            ],
+            [
+                'title' => 'Kids Science Adventure Day',
+                'category' => 'Family',
+                'description' => 'Hari eksplorasi sains untuk keluarga dengan eksperimen sederhana, mini planetarium, dan booth edukasi interaktif.',
+                'price' => 120000,
+                'quota' => 700,
+                'event_date' => '2026-07-12 08:30:00',
+                'status' => 'published',
+                'venue' => 'Museum Pendidikan',
+                'city' => 'Malang',
+                'organizer' => 'EduPlay Lab',
+                'highlights' => "Mini planetarium\nScience experiments\nKids passport challenge",
+                'terms' => "Anak harus didampingi orang tua\nTiket berlaku per peserta\nArea eksperimen mengikuti slot waktu",
+            ],
+        ];
+
+        foreach ($tickets as $ticket) {
+            Ticket::updateOrCreate(
+                ['title' => $ticket['title']],
+                $ticket
+            );
+        }
+    }
+}
