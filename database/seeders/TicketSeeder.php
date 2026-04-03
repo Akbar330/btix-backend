@@ -23,6 +23,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'BANGSA Live',
                 'highlights' => "3 panggung utama\nLineup lintas genre\nArea F&B curated\nPhoto booth interaktif",
                 'terms' => "Tiket berlaku untuk 1 hari\nTidak bisa refund setelah pembayaran sukses\nWajib menunjukkan e-ticket saat masuk",
+                'image' => 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Java Jazz Prelude Night',
@@ -37,6 +38,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Nada Nusantara',
                 'highlights' => "Theater seating premium\nMeet and greet add-on\nMerchandise booth resmi",
                 'terms' => "Pintu dibuka 90 menit sebelum acara\nDilarang membawa kamera profesional\nSeat mengikuti nomor tiket",
+                'image' => 'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Tulus Manusia Tour Bandung',
@@ -51,6 +53,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Langit Nada',
                 'highlights' => "Visual immersive\nBand lengkap\nExclusive setlist Bandung",
                 'terms' => "Tiket sudah habis terjual\nValid hanya untuk jadwal tertera\nDilarang memindahtangankan QR publik",
+                'image' => 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Indonesia Creative Tech Expo',
@@ -65,6 +68,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Creative Forward',
                 'highlights' => "Startup showcase\nAI tools demo\nCareer corner\nCommunity meetup",
                 'terms' => "Tiket berlaku 1 hari penuh\nWorkshop tertentu memiliki kapasitas terbatas\nGunakan badge selama berada di venue",
+                'image' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Bali Sunset Fun Run 10K',
@@ -79,6 +83,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Move Bali',
                 'highlights' => "Race pack premium\nMedali finisher\nSunset route\nLive DJ after run",
                 'terms' => "Peserta wajib hadir 60 menit sebelum start\nNomor dada wajib dipakai\nKategori non-kompetitif",
+                'image' => 'https://images.unsplash.com/photo-1552674605-5defe6aa44bb?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'UX Writing Intensive Bootcamp',
@@ -93,6 +98,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Design Circle ID',
                 'highlights' => "Hands-on case study\nWorkbook digital\nTemplate audit copy",
                 'terms' => "Event telah selesai\nMateri hanya untuk peserta terdaftar\nSertifikat dikirim via email",
+                'image' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Anime Matsuri Surabaya',
@@ -107,6 +113,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Otakuverse',
                 'highlights' => "Cosplay competition\nArtist alley\nGame station\nStage performance",
                 'terms' => "Tiket berlaku untuk 1 hari kunjungan\nWeapon props harus melalui pemeriksaan\nIkuti aturan venue dan panitia",
+                'image' => 'https://images.unsplash.com/photo-1578926314433-b374645be9c8?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Investor Meetup: Startup & Capital',
@@ -121,6 +128,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Scale Society',
                 'highlights' => "Curated networking\nInvestor panel\nFounder speed dating",
                 'terms' => "Masih tahap draft\nBelum tampil ke publik\nDetail akhir dapat berubah",
+                'image' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Festival Kopi Nusantara',
@@ -135,6 +143,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'Ruang Rasa',
                 'highlights' => "Cupping session\nBrewing battle\nCoffee market\nLive acoustic stage",
                 'terms' => "Tiket hanya untuk 1 hari kunjungan\nKelas cupping first come first served\nBawa tumbler untuk refill station",
+                'image' => 'https://images.unsplash.com/photo-1442512595331-e89e5f50914e?w=800&h=600&fit=crop',
             ],
             [
                 'title' => 'Kids Science Adventure Day',
@@ -149,6 +158,7 @@ class TicketSeeder extends Seeder
                 'organizer' => 'EduPlay Lab',
                 'highlights' => "Mini planetarium\nScience experiments\nKids passport challenge",
                 'terms' => "Anak harus didampingi orang tua\nTiket berlaku per peserta\nArea eksperimen mengikuti slot waktu",
+                'image' => 'https://images.unsplash.com/photo-1938022657317-9fa51c933adc?w=800&h=600&fit=crop',
             ],
         ];
 
