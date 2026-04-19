@@ -25,6 +25,9 @@ class User extends Authenticatable
         'password',
         'role',
         'membership',
+        'membership_plan_id',
+        'membership_until',
+        'phone',
     ];
 
     public const MEMBERSHIPS = [
@@ -35,7 +38,16 @@ class User extends Authenticatable
 
     public function getDiscountRate()
     {
+        // If user has membership_plan, use that, otherwise use legacy MEMBERSHIPS constant
+        if ($this->membershipPlan) {
+            return $this->membershipPlan->discount_percentage / 100;
+        }
         return self::MEMBERSHIPS[$this->membership] ?? 0;
+    }
+
+    public function membershipPlan()
+    {
+        return $this->belongsTo(MembershipPlan::class);
     }
 
     /**
@@ -57,6 +69,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'membership_until' => 'datetime',
             'password' => 'hashed',
         ];
     }

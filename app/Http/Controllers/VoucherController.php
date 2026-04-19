@@ -45,8 +45,15 @@ class VoucherController extends Controller
         }
 
         $voucher->update($validated);
+        if ($request->has('is_active')) {
+            $voucher->is_active = $request->boolean('is_active');
+            $voucher->save();
+        }
 
-        return response()->json($voucher);
+        return response()->json([
+            'message' => 'Voucher updated successfully',
+            'voucher' => $voucher->fresh()
+        ]);
     }
 
     public function preview(Request $request): JsonResponse
@@ -65,6 +72,17 @@ class VoucherController extends Controller
             'voucher' => $voucher,
             'discount_amount' => $voucher->calculateDiscount((float) $validated['subtotal']),
         ]);
+    }
+
+    public function destroy(Request $request, Voucher $voucher): JsonResponse
+    {
+        if ($request->user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized action'], 403);
+        }
+
+        $voucher->delete();
+
+        return response()->json(['message' => 'Voucher deleted successfully']);
     }
 
     private function validateVoucher(Request $request, bool $isCreate, ?int $ignoreId = null): array

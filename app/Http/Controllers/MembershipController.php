@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MembershipPlan;
 use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,15 @@ class MembershipController extends Controller
     public function upgrade(Request $request)
     {
         $validated = $request->validate([
-            'membership' => 'required|in:regular,premium',
+            'membership_plan_id' => 'required|exists:membership_plans,id',
             'payment_method' => 'required|string',
         ]);
+
+        $membershipPlan = MembershipPlan::find($validated['membership_plan_id']);
+
+        if (!$membershipPlan || !$membershipPlan->is_active) {
+            return response()->json(['message' => 'Paket membership tidak tersedia.'], 422);
+        }
 
         $paymentMethod = PaymentMethod::query()
             ->where('code', $validated['payment_method'])
@@ -31,12 +38,12 @@ class MembershipController extends Controller
             return response()->json(['message' => 'Metode pembayaran tidak tersedia.'], 422);
         }
 
-        $prices = [
-            'regular' => 50000,
-            'premium' => 100000,
-        ];
+        $price = $membershipPlan->price;
 
-        $price = $prices[$validated['membership']];
+        // If price is 0 (basic plan), no payment needed
+        if ($price === 0) {
+            return response()->json(['free_plan' => true, 'message' => 'Plan gratis, tidak perlu pembayaran']);
+        }
 
         // Read keys from config so this still works when config cache is enabled.
         $this->configureMidtrans();
@@ -52,10 +59,10 @@ class MembershipController extends Controller
             ],
             'item_details' => [
                 [
-                    'id' => 'MEM-' . $validated['membership'],
+                    'id' => 'MEM-' . $membershipPlan->name,
                     'price' => $price,
                     'quantity' => 1,
-                    'name' => 'Membership Upgrade: ' . strtoupper($validated['membership']),
+                    'name' => 'Membership: ' . $membershipPlan->display_name,
                 ]
             ],
             'enabled_payments' => [$paymentMethod->code],
@@ -72,15 +79,27 @@ class MembershipController extends Controller
     public function confirm(Request $request)
     {
         $validated = $request->validate([
-            'membership' => 'required|in:regular,premium',
+            'membership_plan_id' => 'required|exists:membership_plans,id',
         ]);
 
+        $membershipPlan = MembershipPlan::find($validated['membership_plan_id']);
+
+        if (!$membershipPlan || !$membershipPlan->is_active) {
+            return response()->json(['message' => 'Paket membership tidak tersedia.'], 422);
+        }
+
         $user = $request->user();
-        $user->update(['membership' => $validated['membership']]);
+        $membershipUntil = now()->addMonth();
+
+        $user->update([
+            'membership' => $membershipPlan->name,
+            'membership_plan_id' => $membershipPlan->id,
+            'membership_until' => $membershipUntil,
+        ]);
 
         return response()->json([
-            'message' => 'Membership activated: ' . strtoupper($validated['membership']),
-            'user' => $user
+            'message' => 'Membership activated: ' . $membershipPlan->display_name,
+            'user' => $user->load('membershipPlan')
         ]);
     }
 }

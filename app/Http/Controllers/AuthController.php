@@ -21,7 +21,8 @@ class AuthController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'role' => 'user' // default to user over API. Admin users will be seeded or created manually
+            'role' => 'user', // default to user over API. Admin users will be seeded or created manually
+            'membership' => 'basic', // default membership
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -29,7 +30,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'user' => $user
+            'user' => $user->load('membershipPlan')
         ], 201);
     }
 
@@ -53,13 +54,13 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'user' => $user
+            'user' => $user->load('membershipPlan')
         ]);
     }
 
     public function me(Request $request)
     {
-        return response()->json($request->user());
+        return response()->json($request->user()->load('membershipPlan'));
     }
 
     public function logout(Request $request)
