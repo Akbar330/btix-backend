@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppSettingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminAnalyticsController;
 use App\Http\Controllers\ChatbotController;
@@ -20,6 +21,7 @@ Route::get('/admin/membership-plans', [MembershipPlanController::class, 'index']
 
 Route::get('/tickets', [TicketController::class, 'index']);
 Route::get('/tickets/{ticket}', [TicketController::class, 'show']);
+Route::get('/settings', [AppSettingController::class, 'index']);
 
 // Banners
 Route::get('/banners', [BannerController::class, 'index']);
@@ -69,4 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/membership/upgrade', [\App\Http\Controllers\MembershipController::class, 'upgrade']);
     Route::post('/membership/confirm', [\App\Http\Controllers\MembershipController::class, 'confirm']);
     Route::post('/vouchers/preview', [VoucherController::class, 'preview']);
+
+    // Admin Settings
+    Route::patch('/admin/settings', [AppSettingController::class, 'update']);
 });

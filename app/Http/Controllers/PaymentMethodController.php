@@ -26,7 +26,8 @@ class PaymentMethodController extends Controller
         }
 
         $validated = $request->validate([
-            'is_active' => 'required|boolean',
+            'is_active' => 'sometimes|boolean',
+            'logo_url' => 'sometimes|url',
         ]);
 
         $paymentMethod->update($validated);
